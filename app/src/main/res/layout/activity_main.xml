@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="14dp">
+
+    <!-- Nagłówek + język -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KAMERTON 432"
+                android:textColor="#F7F2E7"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-light"
+                android:letterSpacing="0.14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subtitle"
+                android:textColor="#E7C77B"
+                android:textSize="10sp"
+                android:letterSpacing="0.2"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/eqButton"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:minWidth="52dp"
+            android:text="EQ"
+            android:textColor="#E7C77B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/field_bg"
+            android:stateListAnimator="@null"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/langButton"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:minWidth="56dp"
+            android:text="EN"
+            android:textColor="#E7C77B"
+            android:textSize="14sp"
+            android:background="@drawable/field_bg"
+            android:stateListAnimator="@null"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+    </LinearLayout>
+
+    <!-- Zakładki -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/modeFavorites"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:text="@string/tab_favorites"
+            android:textColor="#1A1024"
+            android:textSize="13sp"
+            android:letterSpacing="0.1"
+            android:background="@drawable/pill_active"
+            android:stateListAnimator="@null"
+            android:layout_marginEnd="10dp" />
+
+        <Button
+            android:id="@+id/modeSearch"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:text="@string/tab_search"
+            android:textColor="#E7C77B"
+            android:textSize="13sp"
+            android:letterSpacing="0.1"
+            android:background="@drawable/pill_inactive"
+            android:stateListAnimator="@null" />
+    </LinearLayout>
+
+    <!-- Drugi wiersz: utwór z telefonu -->
+    <Button
+        android:id="@+id/modeLocal"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="@string/tab_local"
+        android:textColor="#E7C77B"
+        android:textSize="13sp"
+        android:letterSpacing="0.1"
+        android:background="@drawable/pill_inactive"
+        android:stateListAnimator="@null"
+        android:layout_marginBottom="16dp" />
+
+    <ScrollView
+        android:id="@+id/scroller"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <!-- ====== SEKCJA ULUBIONE ====== -->
+    <LinearLayout
+        android:id="@+id/favoritesSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/nowCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_bg"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/nowArt"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/art_bg"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/now_playing"
+                android:textColor="#9A8FB8"
+                android:textSize="10sp"
+                android:letterSpacing="0.3"
+                android:layout_marginBottom="7dp" />
+
+            <TextView
+                android:id="@+id/nowPlaying"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\u2014"
+                android:textColor="#F7F2E7"
+                android:textSize="19sp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/nowStation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#E7C77B"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#9A8FB8"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:fontFamily="monospace"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <com.example.tuner432.CymaticsView
+            android:id="@+id/cymatics"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/stationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:background="@drawable/field_bg"
+            android:popupBackground="@android:color/white"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:layout_marginBottom="14dp">
+
+            <Button
+                android:id="@+id/prevButton"
+                android:layout_width="56dp"
+                android:layout_height="37dp"
+                android:text="\u25C0"
+                android:textColor="#E7C77B"
+                android:textSize="20sp"
+                android:background="@drawable/field_bg"
+                android:stateListAnimator="@null" />
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:text="\u25B6"
+                android:textColor="#1A1024"
+                android:textSize="24sp"
+                android:background="@drawable/btn_play"
+                android:stateListAnimator="@null"
+                android:elevation="6dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp" />
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="56dp"
+                android:layout_height="37dp"
+                android:text="\u25B6"
+                android:textColor="#E7C77B"
+                android:textSize="20sp"
+                android:background="@drawable/field_bg"
+                android:stateListAnimator="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <Switch
+                android:id="@+id/switch432"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/convert_432"
+                android:textColor="#C7BEDD"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/eightDButton"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:minWidth="52dp"
+                android:text="8D"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#E7C77B"
+                android:background="@drawable/field_bg"
+                android:stateListAnimator="@null"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/hallButton"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:minWidth="60dp"
+                android:text="@string/hall_btn"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#E7C77B"
+                android:background="@drawable/field_bg"
+                android:stateListAnimator="@null"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#9A8FB8"
+            android:textSize="12sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- ====== SEKCJA SZUKAJ ====== -->
+    <LinearLayout
+        android:id="@+id/searchSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <EditText
+                android:id="@+id/searchInput"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:hint="@string/search_hint"
+                android:textColor="#F7F2E7"
+                android:textColorHint="#9A8FB8"
+                android:textSize="15sp"
+                android:background="@drawable/field_bg"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:layout_marginEnd="10dp" />
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/search_button"
+                android:textColor="#1A1024"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:background="@drawable/pill_active"
+                android:stateListAnimator="@null"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/searchStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/status_search"
+            android:textColor="#9A8FB8"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
+        <ListView
+            android:id="@+id/resultsList"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:divider="#2A2240"
+            android:dividerHeight="1dp"
+            android:cacheColorHint="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/addToDb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_db"
+            android:textColor="#E7C77B"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:paddingTop="12dp"
+            android:paddingBottom="6dp"
+            android:background="?android:attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <!-- ====== SEKCJA Z TELEFONU ====== -->
+    <LinearLayout
+        android:id="@+id/localSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_bg"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_local"
+                android:textColor="#9A8FB8"
+                android:textSize="10sp"
+                android:letterSpacing="0.3"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/localTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/local_empty"
+                android:textColor="#F7F2E7"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:maxLines="3"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/localPickButton"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:text="@string/local_pick"
+            android:textColor="#E7C77B"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:background="@drawable/field_bg"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/localPlayButton"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:text="\u25B6"
+            android:textColor="#1A1024"
+            android:textSize="24sp"
+            android:background="@drawable/btn_play"
+            android:stateListAnimator="@null"
+            android:elevation="6dp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/localStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/local_hint"
+            android:textColor="#9A8FB8"
+            android:textSize="12sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
